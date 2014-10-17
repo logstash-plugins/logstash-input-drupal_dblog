@@ -26,6 +26,7 @@ Gem::Specification.new do |s|
   s.add_runtime_dependency 'logstash', '>= 1.4.0', '< 2.0.0'
   s.add_runtime_dependency 'jar-dependencies', ['~> 0.0.6']
 
+  s.add_runtime_dependency 'logstash-codec-plain'
   s.add_runtime_dependency 'php_serialize'
 
   if RUBY_PLATFORM == 'java'
