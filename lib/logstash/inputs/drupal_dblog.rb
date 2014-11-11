@@ -279,7 +279,7 @@ class LogStash::Inputs::DrupalDblog < LogStash::Inputs::Base
   private
   def build_event(row)
     # Convert unix timestamp
-    timestamp = Time.at(row["timestamp"]).to_datetime.iso8601
+    timestamp = Time.at(row["timestamp"])
 
     msg = row["message"]
     vars = {}
