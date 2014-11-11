@@ -19,11 +19,17 @@ Gem::Specification.new do |s|
   # Special flag to let us know this is actually a logstash plugin
   s.metadata = { "logstash_plugin" => "true", "group" => "input" }
 
+  s.platform = 'java'
+
   # Gem dependencies
   s.add_runtime_dependency 'logstash', '>= 1.4.0', '< 2.0.0'
+  s.add_runtime_dependency 'jar-dependencies'
 
   s.add_runtime_dependency 'logstash-codec-plain'
   s.add_runtime_dependency 'php_serialize'
-  s.add_runtime_dependency 'mysql2'
+
+  # Jar dependencies
+  s.requirements << "jar 'mysql:mysql-connector-java', '5.1.33'"
+  s.add_runtime_dependency 'jdbc-mysql'
 end
 
