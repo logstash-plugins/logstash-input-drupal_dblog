@@ -30,6 +30,7 @@ Gem::Specification.new do |s|
   s.add_runtime_dependency 'php_serialize'
 
   if RUBY_PLATFORM == 'java'
+    s.platform = RUBY_PLATFORM
     s.add_runtime_dependency 'jdbc-mysql'
   else
     s.add_runtime_dependency 'mysql2'
