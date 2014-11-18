@@ -1,13 +1,13 @@
 Gem::Specification.new do |s|
 
   s.name            = 'logstash-input-drupal_dblog'
-  s.version         = '0.1.0'
+  s.version         = '0.1.1'
   s.licenses        = ['Apache License (2.0)']
   s.summary         = "Retrieve watchdog log events from a Drupal installation with DBLog enabled"
-  s.description     = "Retrieve watchdog log events from a Drupal installation with DBLog enabled"
+  s.description     = "This gem is a logstash plugin required to be installed on top of the Logstash core pipeline using $LS_HOME/bin/plugin install gemname. This gem is not a stand-alone program"
   s.authors         = ["Elasticsearch"]
   s.email           = 'richard.pijnenburg@elasticsearch.com'
-  s.homepage        = "http://logstash.net/"
+  s.homepage        = "http://www.elasticsearch.org/guide/en/logstash/current/index.html"
   s.require_paths = ["lib"]
 
   # Files
@@ -17,7 +17,7 @@ Gem::Specification.new do |s|
   s.test_files = s.files.grep(%r{^(test|spec|features)/})
 
   # Special flag to let us know this is actually a logstash plugin
-  s.metadata = { "logstash_plugin" => "true", "group" => "input" }
+  s.metadata = { "logstash_plugin" => "true", "logstash_group" => "input" }
 
   # Jar dependencies
   s.requirements << "jar 'mysql:mysql-connector-java', '5.1.33'"
@@ -36,5 +36,6 @@ Gem::Specification.new do |s|
     s.add_runtime_dependency 'mysql2'
   end
 
+  s.add_development_dependency 'logstash-devutils'
 end
 
