@@ -17,7 +17,6 @@ require "logstash/namespace"
 #
 class LogStash::Inputs::DrupalDblog < LogStash::Inputs::Base
   config_name "drupal_dblog"
-  milestone 1
 
   default :codec, "plain"
 
