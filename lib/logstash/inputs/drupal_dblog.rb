@@ -2,7 +2,8 @@
 require "date"
 require "logstash/inputs/base"
 require "logstash/namespace"
-
+require "logstash-input-drupal_dblog_jars"
+require "stud/interval"
 
 # Retrieve watchdog log events from a Drupal installation with DBLog enabled.
 # The events are pulled out directly from the database.
@@ -115,7 +116,7 @@ class LogStash::Inputs::DrupalDblog < LogStash::Inputs::Base
   def run(output_queue)
     @logger.info("Initializing drupal_dblog")
 
-    loop do
+    while !stop?
       @logger.debug("Drupal DBLog: Starting to fetch new watchdog entries")
       start = Time.now.to_i
 
@@ -133,9 +134,11 @@ class LogStash::Inputs::DrupalDblog < LogStash::Inputs::Base
       sleepTime = @interval * 60 - timeTaken
       if sleepTime > 0
         @logger.debug("Drupal DBLog: Sleeping for #{sleepTime} seconds")
-        sleep(sleepTime)
+        Stud.stoppable_sleep(sleepTime) do
+          stop?
+        end
       end
-    end # loop
+    end
   end # def run
 
   private
@@ -195,7 +198,7 @@ class LogStash::Inputs::DrupalDblog < LogStash::Inputs::Base
       end
 
       # Fetch new entries, and create the event
-      while true
+      while !stop?
         results = get_db_rows(lastWid)
         if results.length() < 1
           break
