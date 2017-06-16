@@ -14,7 +14,7 @@ END - GENERATED VARIABLES, DO NOT EDIT!
 
 [id="plugins-{type}-{plugin}"]
 
-=== Drupal_dblog
+=== Drupal_dblog input plugin
 
 include::{include_path}/plugin_header.asciidoc[]
 
