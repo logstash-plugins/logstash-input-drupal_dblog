@@ -226,7 +226,7 @@ class LogStash::Inputs::DrupalDblog < LogStash::Inputs::Base
   end # def check_database
 
   def get_db_rows(lastWid)
-    query = 'SELECT wid, uid, type AS watchdog_type, message, variables, severity, link, location, referer, hostname, timestamp from watchdog WHERE wid > ' + lastWid.to_s + " ORDER BY wid asc LIMIT " + @bulksize.to_s
+    query = 'SELECT wid, uid, type AS watchdog_type, message, CONVERT(variables USING utf8) AS variables, severity, link, location, referer, hostname, timestamp from watchdog WHERE wid > ' + lastWid.to_s + " ORDER BY wid asc LIMIT " + @bulksize.to_s
     return @client.query(query)
   end # def get_db_rows
 
