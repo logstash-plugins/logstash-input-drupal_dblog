@@ -21,8 +21,8 @@ class LogStash::Inputs::DrupalDblog < LogStash::Inputs::Base
 
   default :codec, "plain"
 
-  # Specify all drupal databases that you whish to import from.
-  # This can be as many as you whish.
+  # Specify all drupal databases that you wish to import from.
+  # This can be as many as you wish.
   # The format is a hash, with a unique site name as the key, and a databse
   # url as the value.
   #
@@ -35,7 +35,7 @@ class LogStash::Inputs::DrupalDblog < LogStash::Inputs::Base
   config :databases, :validate => :hash
 
   # By default, the event only contains the current user id as a field.
-  # If you whish to add the username as an additional field, set this to true.
+  # If you wish to add the username as an additional field, set this to true.
   config :add_usernames, :validate => :boolean, :default => false
 
   # Time between checks in minutes.
