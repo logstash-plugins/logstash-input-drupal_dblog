@@ -1,5 +1,6 @@
 :plugin: drupal_dblog
 :type: input
+:default_codec: plain
 
 ///////////////////////////////////////////
 START - GENERATED VARIABLES, DO NOT EDIT!
@@ -100,3 +101,5 @@ Time between checks in minutes.
 
 [id="plugins-{type}s-{plugin}-common-options"]
 include::{include_path}/{type}.asciidoc[]
+
+:default_codec!:
