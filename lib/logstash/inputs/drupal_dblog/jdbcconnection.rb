@@ -12,7 +12,7 @@ class LogStash::DrupalDblogJavaMysqlConnection
   def initialize(host, username, password, database, port = nil)
     port ||= 3306
 
-    address = "jdbc:mysql://#{host}:#{port}/#{database}"
+    address = "jdbc:mysql://#{host}:#{port}/#{database}?useOldAliasMetadataBehavior=true"
     @connection = java.sql.DriverManager.getConnection(address, username, password)
   end # def initialize
 
